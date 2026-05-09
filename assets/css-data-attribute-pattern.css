@@ -1,0 +1,26 @@
+:root {
+  --visual-variant-surface: #ffffff;
+  --visual-variant-text: #111827;
+  --visual-variant-accent: #2563eb;
+}
+
+:root[data-visual-variant="calm"] {
+  --visual-variant-surface: #f8fafc;
+  --visual-variant-text: #0f172a;
+  --visual-variant-accent: #0f766e;
+}
+
+:root[data-visual-variant="bold"] {
+  --visual-variant-surface: #111827;
+  --visual-variant-text: #ffffff;
+  --visual-variant-accent: #f59e0b;
+}
+
+.visual-variant-surface {
+  background: var(--visual-variant-surface);
+  color: var(--visual-variant-text);
+}
+
+.visual-variant-accent {
+  color: var(--visual-variant-accent);
+}
