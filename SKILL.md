@@ -1,6 +1,6 @@
 # visual-variants
 
-Use this skill when a user wants to compare, prototype, switch, preserve, or review multiple visual directions inside a real frontend codebase. Typical requests mention visual variants, design options, alternate UI directions, A/B UI drafts, layout candidates, theme trials, style explorations, design versions, or a small developer-only switcher for comparing implementations.
+Use this skill when a user wants to compare, prototype, switch, preserve, or review multiple visual directions inside a real frontend codebase. Typical requests mention visual variants, design options, alternate UI directions, A/B UI drafts, layout candidates, theme trials, style explorations, design versions, or a small developer-only switcher for comparing implementations. Non-English requests should trigger this skill too when they describe the same intent, such as Chinese requests mentioning 视觉变体, 设计版本, 多个 UI 方向, 界面方案, 视觉方案, 设计方案, or 切换比较.
 
 This skill is agent-agnostic. It is written to work as a portable skill/spec for coding agents that can read `SKILL.md`, optional files in `references/`, and optional starter templates in `assets/`. Codex-specific installation paths are documentation details, not a requirement of the skill itself.
 
@@ -56,6 +56,8 @@ Create and maintain a project-native visual variant system. The result should fe
 ## Trigger Guidance
 
 Use this skill directly when the user asks for multiple visual directions, visual options, design variants, versioned UI alternatives, or a way to switch between interface looks in the running app.
+
+Also use it for equivalent non-English phrasing. For example, Chinese requests like "给这个页面做几个不同的视觉版本", "生成 3 个 UI 设计方向并加切换器", "做几个界面方案让我切换比较", or "确定第 2 个版本并清理其它方案" match this skill.
 
 If the user asks only for a critique, design opinion, or mockup without implementation, use the principles here to structure the answer, but do not add a switcher unless they ask to implement or compare variants in code.
 

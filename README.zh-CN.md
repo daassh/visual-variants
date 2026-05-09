@@ -31,16 +31,18 @@
 ## 示例请求
 
 ```text
-Add three visual directions for this dashboard and let me switch between them.
+给这个 dashboard 做 3 个不同的视觉方向，并加一个切换器让我比较。
 ```
 
 ```text
-Create a visual variant switcher for this page using the project's existing styling setup.
+用项目现有的样式体系，为这个页面创建一个视觉变体切换器。
 ```
 
 ```text
-Finalize variant 2 and clean up the unused visual alternatives.
+确定第 2 个版本，并清理其它不再使用的视觉方案代码。
 ```
+
+也可以用更自然的中文触发，比如“做几个界面方案让我切换比较”、“生成几个 UI 设计版本”或“给这个页面加视觉变体”。
 
 ## 安装
 
