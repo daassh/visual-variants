@@ -48,6 +48,8 @@ Finalize variant 2 and clean up the unused visual alternatives.
 npx skills add daassh/visual-variants
 ```
 
+The `SKILL.md` file includes the required `name` and `description` metadata used by skills installers.
+
 For local development:
 
 ```bash

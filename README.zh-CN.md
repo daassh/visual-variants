@@ -50,6 +50,8 @@
 npx skills add daassh/visual-variants
 ```
 
+`SKILL.md` 文件包含 skills 安装器识别所需的 `name` 和 `description` 元数据。
+
 本地开发时：
 
 ```bash

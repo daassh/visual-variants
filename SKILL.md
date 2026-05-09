@@ -1,3 +1,8 @@
+---
+name: visual-variants
+description: Create and maintain project-native visual variant systems for comparing multiple UI directions inside real frontend codebases.
+---
+
 # visual-variants
 
 Use this skill when a user wants to compare, prototype, switch, preserve, or review multiple visual directions inside a real frontend codebase. Typical requests mention visual variants, design options, alternate UI directions, A/B UI drafts, layout candidates, theme trials, style explorations, design versions, or a small developer-only switcher for comparing implementations. Non-English requests should trigger this skill too when they describe the same intent, such as Chinese requests mentioning 视觉变体, 设计版本, 多个 UI 方向, 界面方案, 视觉方案, 设计方案, or 切换比较.

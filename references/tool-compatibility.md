@@ -22,6 +22,8 @@ Codex can install this skill through a skills CLI or by placing the folder in a 
 .agents/skills/visual-variants/
 ```
 
+When publishing for a skills CLI, keep the YAML metadata at the very top of `SKILL.md`; installers use it to discover `name` and `description`.
+
 Codex should treat `SKILL.md` as the entry point and load reference files only when the task needs deeper guidance.
 
 ## Claude Code, Cursor, Gemini CLI, OpenCode, And Similar Agents

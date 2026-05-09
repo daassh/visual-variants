@@ -10,6 +10,15 @@ Install from GitHub shorthand:
 npx skills add daassh/visual-variants
 ```
 
+The repository `SKILL.md` must start with YAML metadata so the skills CLI can discover it:
+
+```md
+---
+name: visual-variants
+description: Create and maintain project-native visual variant systems for comparing multiple UI directions inside real frontend codebases.
+---
+```
+
 Repository URL:
 
 https://github.com/daassh/visual-variants
