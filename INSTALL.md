@@ -7,14 +7,12 @@
 Install from GitHub shorthand:
 
 ```bash
-npx skills add <owner>/visual-variants
+npx skills add daassh/visual-variants
 ```
 
-For example, after publishing this repository under your GitHub account:
+Repository URL:
 
-```bash
-npx skills add your-name/visual-variants
-```
+https://github.com/daassh/visual-variants
 
 ## Local Development
 

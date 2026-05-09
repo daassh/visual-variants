@@ -1,5 +1,11 @@
 # visual-variants
 
+![Agent Skill](https://img.shields.io/badge/agent-skill-111827)
+![Portable](https://img.shields.io/badge/portable-Codex%20%7C%20Claude%20Code%20%7C%20Cursor%20%7C%20Gemini%20CLI-blue)
+![Frontend](https://img.shields.io/badge/frontend-visual%20variants-0f766e)
+
+English | [简体中文](./README.zh-CN.md)
+
 `visual-variants` is an Agent Skill for creating project-native visual variant switchers in frontend codebases.
 
 It helps an AI coding agent add a small, maintainable way to compare multiple UI directions directly inside the real app. The skill is intentionally framework-agnostic: it adapts to the project's existing frontend stack and styling system instead of forcing a package, framework, or design convention.
@@ -39,7 +45,7 @@ Finalize variant 2 and clean up the unused visual alternatives.
 ## Installation
 
 ```bash
-npx skills add <owner>/visual-variants
+npx skills add daassh/visual-variants
 ```
 
 For local development:
