@@ -22,6 +22,8 @@ Create and maintain a project-native visual variant system. The result should fe
 - Keep variants inspectable. Variants should map to clear DOM attributes, classes, component props, route state, local storage, query params, or existing feature flag systems.
 - Preserve useful experimentation tools. When a visual direction is finalized, remove dead candidate UI if requested, but keep reusable visual-variant infrastructure when it may help future work.
 - Avoid production leakage. Default to development-only mounting unless the user explicitly wants public-facing variant controls.
+- Do not stop at creating helper files. A visible switcher must be mounted into the app, page, layout, preview shell, or existing dev toolbar unless the user explicitly asks for state-only variants.
+- Do not add explanatory review copy to the UI being compared. Variant names, rationale, comparison notes, or implementation explanations belong in agent responses, comments, docs, or hidden metadata, not inside the target product DOM.
 
 ## Workflow
 
@@ -44,16 +46,31 @@ Create and maintain a project-native visual variant system. The result should fe
    - CSS Modules projects should keep variant classes local and typed when the project uses typing.
    - Scoped component styles should keep styles close to the component unless the project has a central design layer.
    - Plain CSS projects should use readable selectors, custom properties, and data attributes.
+   - Keep the target UI faithful to the product surface. Do not insert headings, captions, banners, helper paragraphs, side notes, "variant direction" summaries, or multi-variant explanations into the component/page just to explain the experiment.
+   - If variant metadata is needed for maintainers, keep it outside visible product DOM: variant arrays, code comments, Storybook metadata, docs, final response summaries, or `title`/`aria-label` on the switcher controls when appropriate. Use `title` for optional hover metadata and `aria-label` for assistive names; do not rely on `aria-label` as a visible tooltip.
    - Use files in `assets/` only as starter patterns. Adapt them to local framework, naming, typing, accessibility, linting, and styling conventions before committing them to a project.
 
 4. Make switching ergonomic.
+   - Mount the switcher in a real runtime path. For component apps, render it from the relevant page, layout, app shell, or existing preview toolbar. For static/server-rendered apps, run the controller after the DOM is ready and append it to the document or an existing tool root.
+   - Confirm the selected integration point is actually loaded by the page being reviewed. Avoid adding an unused component, composable, utility, or asset without wiring it into the route/page.
+   - Gate visible controls behind the project's development flag when appropriate, but make sure that flag is true in local preview. If the control is development-only, keep the variant state path working independently from production code.
+   - Default visible switchers to a lower-left overlay that is removed from normal layout flow. Mount the control under `document.body` by default and use page-level absolute positioning with `left` and `bottom` offsets, so it is positioned relative to the whole page rather than a component container. Only use a component-local root when the user explicitly asks for a scoped preview control. The switcher must not resize, push, or reflow page content.
+   - Keep the default visible control compact and text-only: `style: 1 | [2] | 3 | 4 | 5`, where the selected variant is wrapped in brackets. Preserve the `style` label and bracketed selected-state convention unless the user asks for different wording or the project already has a better preview-toolbar convention.
    - Support click controls when useful.
-   - Support keyboard shortcuts only when they do not conflict with the app.
-   - Persist the selected variant in local storage or query params when useful for review.
+   - Support keyboard number shortcuts for variants when they do not conflict with the app: `1` selects the first variant, `2` selects the second, and so on. Ignore shortcuts while the user is typing in inputs, textareas, selects, or editable content.
+   - Persist the selected variant in local storage or query params when useful for review. Prefer query params when reviewers need shareable URLs; mirror the value to local storage when persistence is helpful.
    - Mark overlays or controls so project scanners, capture tools, or game/bookmarklet systems can ignore them when needed.
    - Keep controls keyboard and screen-reader accessible when they are visible to users or reviewers.
 
-5. Clean up deliberately.
+5. Verify that switching is visible.
+   - Run the app when possible and inspect it in a browser.
+   - Check that `[data-visual-variant-switcher]` or the project-native equivalent exists in the DOM.
+   - Click through each variant and confirm the root attribute, class, prop, route state, or feature flag changes.
+   - Confirm the visual surface changes for each variant. If variants are subtle token changes, name the exact token or selector that changed.
+   - Check reload behavior when persistence was added.
+   - If browser verification is impossible, run the closest available build/type/lint check and state clearly that the switcher was not visually verified.
+
+6. Clean up deliberately.
    - If the user asks to finalize one direction, remove obsolete variant branches and styles.
    - Preserve the reusable switcher utility unless the user asks to delete the whole experimentation system.
    - Remove stale translations, docs, screenshots, or config entries that refer to deleted variants.
@@ -75,8 +92,20 @@ If the user asks for production experimentation, analytics allocation, traffic s
 - Do not introduce a new styling library, component framework, state manager, or build dependency unless the user explicitly asks.
 - Prefer names based on "visual variants", "variants", or "design variants". Avoid internal or project-specific terms unless the target project already uses them.
 - Verify the result in the browser when a local app can be run.
-- In the final response, state which project patterns were detected, where the variant switcher or state lives, and how to finalize or remove variants later.
+- In the final response, state which project patterns were detected, where the variant switcher is mounted, where the variant state lives, and how to finalize or remove variants later.
 - If browser verification is not possible, say what was checked instead.
+
+## Common Failure Checks
+
+Before finishing, explicitly rule out these common misses:
+
+- The switcher component/composable/controller exists but is never imported or rendered.
+- The switcher is mounted in a route, layout, Storybook story, or preview shell different from the page the user is reviewing.
+- A development-only guard hides the switcher in the local command being used.
+- The DOM controller runs before `document.body` exists.
+- The variant state changes but no CSS selector, class map, token scope, or component branch consumes it.
+- The selected variant persists to storage but invalid stored values prevent a valid default from rendering.
+- The implementation added visible review notes, variant rationale, or comparison text inside the target UI instead of keeping that explanation outside the product DOM.
 
 ## Portability Notes
 
